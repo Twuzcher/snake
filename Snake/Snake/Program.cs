@@ -27,6 +27,30 @@ namespace Snake
             point_2.draw();
 
             Console.ReadLine();
+            Console.Clear();
+            point_1 = new Point(2, 2, '*');
+            point_2 = new Point(2, 3, '*');
+
+            List<Point> points = new List<Point>();
+            points.Add(point_1);
+            points.Add(point_2);
+
+            foreach (Point p in points)
+            {
+                p.draw();
+            }
+
+            Console.ReadLine();
+            Console.Clear();
+
+            points.RemoveAt(0);
+
+            foreach (Point p in points)
+            {
+                p.draw();
+            }
+
+            Console.ReadLine();
         }
 
         static void myFunc(Point point)
