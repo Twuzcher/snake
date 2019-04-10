@@ -54,5 +54,11 @@ namespace Snake
         {
             return x + ", " + y + ", " + symb;
         }
+
+        public void Clear()
+        {
+            symb = ' ';
+            draw();
+        }
     }
 }

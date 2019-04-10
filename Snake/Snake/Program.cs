@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake
@@ -28,6 +30,10 @@ namespace Snake
             Snake snake = new Snake(point, 4, Direction.Right);
 
             snake.draw();
+            snake.Move();
+
+            Thread.Sleep(300);
+            snake.Move();
 
             Console.ReadLine();
         }
