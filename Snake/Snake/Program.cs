@@ -29,34 +29,31 @@ namespace Snake
             Snake snake = new Snake(point, 4, Direction.Right);
 
             snake.draw();
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            Point food = foodCreator.CreateFood();
+            food.draw();
 
             while (true)
             {
-                if (Console.KeyAvailable)
+
+                if (snake.Eat(food))
                 {
-                    ConsoleKeyInfo key = Console.ReadKey();
-                    switch (key.Key)
-                    {
-                        case ConsoleKey.LeftArrow:
-                            snake.direction = Direction.Left;
-                            break;
-                        case ConsoleKey.RightArrow:
-                            snake.direction = Direction.Right;
-                            break;
-                        case ConsoleKey.UpArrow:
-                            snake.direction = Direction.Up;
-                            break;
-                        case ConsoleKey.DownArrow:
-                            snake.direction = Direction.Down;
-                            break;
-                    }   
+                    food = foodCreator.CreateFood();
+                    food.draw();
+                }
+                else
+                {
+                    snake.Move();
                 }
 
                 Thread.Sleep(100);
-                snake.Move();
-            }
 
-            Console.ReadLine();
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+            }
         }
     }
 }
